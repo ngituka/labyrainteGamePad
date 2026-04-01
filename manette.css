@@ -1,0 +1,101 @@
+/* Réinitialisation de base et couleurs */
+
+@font-face{
+    src : url("fonts/PressStart2P-Regular.ttf");
+    font-family: "pressStart";
+}
+body {
+    font-family: "pressStart";
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Empêche le défilement */
+    position: relative;
+    user-select: none; /* Empêche la sélection de texte sur mobile */
+}
+
+/* ----- BARRE DE VIE (En haut à gauche) ----- */
+.health-bar {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    display: flex;
+    align-items: center;
+    gap: 1vw; /* Espace proportionnel entre les cœurs */
+}
+
+.pv-text {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    margin-right: 1vw;
+}
+
+.heart {
+    /* S'adapte à l'écran : min 15px, max 40px */
+    width: clamp(15px, 3.5vw, 40px); 
+    height: auto;
+    object-fit: contain;
+}
+
+/* ----- CONTRÔLES (En bas) ----- */
+.controls-area {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+    display: flex;
+    justify-content: space-between; /* Joystick à gauche, boutons à droite */
+    align-items: flex-end;
+}
+
+/* Joystick */
+.joystick-wrapper {
+    position: relative;
+    width: clamp(100px, 25vw, 200px);
+    aspect-ratio: 1 / 1; /* Garde le conteneur carré */
+    align-items: center;
+}
+
+.joystick-bg, .joystick-stick {
+    position: absolute;
+    object-fit: contain;
+}
+
+.joystick-bg{
+    width:100%;
+    height:auto;
+}
+
+.joystick-stick{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:90%;
+    height:auto;
+}
+
+/* Boutons d'action */
+.action-buttons {
+    display: flex;
+    align-items: flex-end;
+    gap: 2vw;
+}
+
+.btn-shoot-wrapper {
+    /* Permet de surélever le bouton "shoot" par rapport au bouton "collect" */
+    margin-bottom: 40%; 
+}
+
+.action-btn {
+    width: clamp(80px, 20vw, 150px);
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+/* Effet de clic visuel pour mobile */
+.action-btn:active {
+    transform: scale(0.95);
+}
