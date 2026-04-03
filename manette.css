@@ -42,7 +42,7 @@ body {
 /* ----- CONTRÔLES (En bas) ----- */
 .controls-area {
     position: absolute;
-    bottom: 5%;
+    bottom: 20%;
     left: 5%;
     right: 5%;
     display: flex;
@@ -77,19 +77,9 @@ body {
 }
 
 /* Boutons d'action */
-.action-buttons {
-    display: flex;
-    align-items: flex-end;
-    gap: 2vw;
-}
-
-.btn-shoot-wrapper {
-    /* Permet de surélever le bouton "shoot" par rapport au bouton "collect" */
-    margin-bottom: 40%; 
-}
 
 .action-btn {
-    width: clamp(80px, 20vw, 150px);
+    width: clamp(100px, 20vw, 200px);
     height: auto;
     object-fit: contain;
     cursor: pointer;

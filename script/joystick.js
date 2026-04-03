@@ -10,6 +10,10 @@ let joystick;
 let lastX;
 let lastY;
 
+//TODO : corriger retour centre sur maintien joystick
+//TODO : tailles des boutons
+//TODO : gérer diagonales
+
 document.addEventListener("DOMContentLoaded", (event) => {
     joystick = document.getElementById("joystick");
     gauche = joystick.offsetLeft;
