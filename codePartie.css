@@ -48,3 +48,9 @@ body {
     cursor:pointer;
 
 }
+
+#error{
+    color:red;
+    text-align: center;
+    visibility: hidden;
+}

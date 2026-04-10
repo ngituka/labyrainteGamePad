@@ -89,3 +89,26 @@ body {
 .action-btn:active {
     transform: scale(0.95);
 }
+
+#orientationOverlay{
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem 0;
+}
+
+#orientationOverlay .orientationText{
+    top: 40%;
+    position: relative;
+    width: 90%;
+    text-align: center;
+}
+
+@media screen and (orientation: portrait){
+    #orientationOverlay{
+        visibility: visible;
+    }
+}

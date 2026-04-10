@@ -7,8 +7,9 @@ document.addEventListener("DOMContentLoaded", (event)=>{
 });
 
 function joinGame(code){
+    const error = document.querySelector("#error");
     if(code.length < 8){
-        alert("remplis le code wsh tu veux pas joueer");
+        error.style.visibility = "visible";
     }
     else{
         code = code.toUpperCase();
@@ -17,7 +18,8 @@ function joinGame(code){
         } else {
             console.log('WebSocket is not open.');
         }
-        window.location.replace("index.html")
+        error.style.visibility = "hidden";
+        window.location.replace("manette.html")
     }
     
 }
