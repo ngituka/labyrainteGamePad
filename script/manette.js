@@ -1,5 +1,5 @@
 
-const socket = new WebSocket("ws://idkyet");
+const socket = new WebSocket("wss://idkyet");
 const charType = 0;
 
 document.addEventListener("DOMContentLoaded", (event) => {
