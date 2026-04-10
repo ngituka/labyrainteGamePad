@@ -1,0 +1,50 @@
+/* Réinitialisation de base et couleurs */
+
+@font-face{
+    src : url("fonts/PressStart2P-Regular.ttf");
+    font-family: "pressStart";
+}
+body {
+    font-family: "pressStart";
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Empêche le défilement */
+    position: relative;
+    user-select: none; /* Empêche la sélection de texte sur mobile */
+}
+
+.codeInput{
+    text-align: center;
+}
+
+#code {
+    font-size:3rem;
+    border: none;
+    border-bottom-width: medium;
+    border-bottom-style: none;
+    border-bottom-color: currentcolor;
+    background: none;
+    border-bottom: solid 1px white;
+    outline: none;
+    color: white;
+    font-family: pressStart;
+
+}
+
+#join{
+    background: white;
+    color:black;
+    font-family: pressStart;
+    margin-top:1rem;
+    border:none;
+    padding:0.5rem;
+}
+
+#join:hover{
+    cursor:pointer;
+
+}

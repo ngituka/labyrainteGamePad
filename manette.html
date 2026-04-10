@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>labyrainté</title>
+    <link href="manette.css" rel="stylesheet">
+    <script src="script/manette.js"></script>
+    <script src="script/joystick.js"></script>
+</head>
+<body>
+
+    <div class="health-bar">
+        <span class="pv-text">pv:</span>
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/lifeloss.png" alt="coeur vide" class="heart">
+        <img src="images/lifeloss.png" alt="coeur vide" class="heart">
+    </div>
+
+    <div class="controls-area">
+        
+        <div class="joystick-wrapper">
+            <img src="images/bg-joystick.png" alt="fond joystick" class="joystick-bg">
+            <img src="images/joystick.png" alt="joystick" class="joystick-stick" id="joystick" draggable="false">
+        </div>
+
+        <div class="action-buttons">
+            <div class="btn-shoot-wrapper">
+                <img src="images/shoot.png" alt="bouton tirer" class="action-btn" id="shoot">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
