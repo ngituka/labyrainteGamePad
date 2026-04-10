@@ -1,4 +1,4 @@
-const socket = new WebSocket("ws://172.18.76.198");
+const socket = new WebSocket("wss://172.18.76.198");
 
 document.addEventListener("DOMContentLoaded", (event)=>{
     let button = document.getElementById("join");
