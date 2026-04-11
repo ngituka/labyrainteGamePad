@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     shoot.addEventListener("click", tirer);
 
     const joystick = document.getElementById("joystick");
-    joystickOrientation = joystick.getBoundingClientRect();
+    const joystickOrientation = joystick.getBoundingClientRect();
     let joystickX = joystickOrientation.left;
     let joystickY = joystickOrientation.top;
 
