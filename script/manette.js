@@ -1,5 +1,6 @@
 
-const socket = new WebSocket("wss://idkyet");
+import {socket} from './websocket.js';
+
 const charType = 0;
 
 document.addEventListener("DOMContentLoaded", (event) => {
