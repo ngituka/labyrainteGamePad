@@ -1,5 +1,5 @@
 
-import {socket} from './websocket.js';
+import {ws} from './websocket.js';
 
 const charType = 0;
 
