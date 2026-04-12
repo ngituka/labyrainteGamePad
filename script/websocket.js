@@ -1,4 +1,5 @@
-const wssUrl = "wss://127.0.0.1:9082/";
+export var url = ""
+const wssUrl = "wss://" + url + ":9082/";
 export let ws = null;
 let counter = 0;
 let pingInterval;
@@ -30,6 +31,8 @@ function initializeWebSocketListeners() {
   });
 }
 
-console.log("OPENING");
-ws = new WebSocket(wssUrl);
-initializeWebSocketListeners();
+export function open(){
+  console.log("OPENING");
+  ws = new WebSocket(wssUrl);
+  initializeWebSocketListeners();
+}
