@@ -25,11 +25,12 @@ function joinGame(code){
             connect()
         }
         catch(error){
-            alert("La connection a échoué, veuillez vérifier le code et que vous etes connecter au meme réseau que le serveur.")
-            return
+            console.log(error);
+            alert("La connection a échoué, veuillez vérifier le code et que vous etes connecter au meme réseau que le serveur.");
+            return;
         }
         error.style.visibility = "hidden";
-        window.location.replace("manette.html")
+        window.location.replace("manette.html");
     }
     
 }
