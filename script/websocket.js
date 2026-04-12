@@ -1,5 +1,6 @@
 const wssUrl = "wss://127.0.0.1:9082";
 export let ws = null;
+let counter = 0
 
 function initializeWebSocketListeners() {
   ws.addEventListener("open", () => {
