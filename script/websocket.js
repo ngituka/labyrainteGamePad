@@ -31,7 +31,7 @@ function initializeWebSocketListeners() {
   });
 }
 
-export function open(){
+export function connect(){
   console.log("OPENING");
   ws = new WebSocket(wssUrl);
   initializeWebSocketListeners();
