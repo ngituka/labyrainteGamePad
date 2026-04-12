@@ -1,5 +1,37 @@
-export const socket = new WebSocket("wss://127.0.0.1:9082");
+const wssUrl = "wss://127.0.0.1:9082";
+export let socket = null;
 
-socket.addEventListener("open", (event) => {
-  socket.send("Coucou le serveur !");
+function initializeWebSocketListeners(ws) {
+  ws.addEventListener("open", () => {
+    log("CONNECTED");
+    pingInterval = setInterval(() => {
+      log(`SENT: ping: ${counter}`);
+      ws.send("ping");
+    }, 1000);
+  });
+
+  ws.addEventListener("close", () => {
+    log("DISCONNECTED");
+    clearInterval(pingInterval);
+  });
+
+  ws.addEventListener("message", (e) => {
+    log(`RECEIVED: ${e.data}: ${counter}`);
+    counter++;
+  });
+
+  ws.addEventListener("error", (e) => {
+    log(`ERROR`);
+  });
+}
+
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    websocket = new WebSocket(wsUri);
+    initializeWebSocketListeners(websocket);
+  }
 });
+
+log("OPENING");
+websocket = new WebSocket(wsUri);
+initializeWebSocketListeners(websocket);
