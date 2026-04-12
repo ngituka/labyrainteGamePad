@@ -3,25 +3,25 @@ export let socket = null;
 
 function initializeWebSocketListeners(ws) {
   ws.addEventListener("open", () => {
-    log("CONNECTED");
+    console.log("CONNECTED");
     pingInterval = setInterval(() => {
-      log(`SENT: ping: ${counter}`);
+      console.log(`SENT: ping: ${counter}`);
       ws.send("ping");
     }, 1000);
   });
 
   ws.addEventListener("close", () => {
-    log("DISCONNECTED");
+    console.log("DISCONNECTED");
     clearInterval(pingInterval);
   });
 
   ws.addEventListener("message", (e) => {
-    log(`RECEIVED: ${e.data}: ${counter}`);
+    console.log(`RECEIVED: ${e.data}: ${counter}`);
     counter++;
   });
 
   ws.addEventListener("error", (e) => {
-    log(`ERROR`);
+    console.log(`ERROR`);
   });
 }
 
@@ -32,6 +32,6 @@ window.addEventListener("pageshow", (event) => {
   }
 });
 
-log("OPENING");
+console.log("OPENING");
 websocket = new WebSocket(wsUri);
 initializeWebSocketListeners(websocket);
