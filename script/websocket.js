@@ -35,4 +35,4 @@ window.addEventListener("pageshow", (event) => {
 
 console.log("OPENING");
 ws = new WebSocket(wssUrl);
-initializeWebSocketListeners(websocket);
+initializeWebSocketListeners(ws);
