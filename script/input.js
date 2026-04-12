@@ -1,4 +1,5 @@
-import {ws} from './websocket.js';
+import {url} from './websocket.js';
+import {connect} from './websocket.js';
 
 document.addEventListener("DOMContentLoaded", (event)=>{
     let button = document.getElementById("join");
@@ -8,15 +9,23 @@ document.addEventListener("DOMContentLoaded", (event)=>{
 
 function joinGame(code){
     const error = document.querySelector("#error");
-    if(code.length < 8){
+    if(code.length !== 8){
         error.style.visibility = "visible";
     }
     else{
         code = code.toUpperCase();
-        if (ws.readyState === WebSocket.OPEN) {
-            ws.send(code);
-        } else {
-            console.log('WebSocket is not open.');
+        var url = ""
+        for(let i = 0; i < code.length; i+=2){
+            const ipPart = code[i] + code[i+1];
+            ip += '${Number("0x" + code)}.'
+        }
+        url.slice(0,-1);
+        try{
+            connect()
+        }
+        catch(error){
+            alert("La connection a échoué, veuillez vérifier le code et que vous etes connecter au meme réseau que le serveur.")
+            return
         }
         error.style.visibility = "hidden";
         window.location.replace("manette.html")
