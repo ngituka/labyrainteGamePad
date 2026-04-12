@@ -1,7 +1,7 @@
 const wssUrl = "wss://127.0.0.1:9082";
-export let socket = null;
+export let ws = null;
 
-function initializeWebSocketListeners(ws) {
+function initializeWebSocketListeners() {
   ws.addEventListener("open", () => {
     console.log("CONNECTED");
     pingInterval = setInterval(() => {
@@ -27,11 +27,11 @@ function initializeWebSocketListeners(ws) {
 
 window.addEventListener("pageshow", (event) => {
   if (event.persisted) {
-    websocket = new WebSocket(wsUri);
-    initializeWebSocketListeners(websocket);
+    ws = new WebSocket(wssUrl);
+    initializeWebSocketListeners();
   }
 });
 
 console.log("OPENING");
-websocket = new WebSocket(wsUri);
+ws = new WebSocket(wssUrl);
 initializeWebSocketListeners(websocket);
