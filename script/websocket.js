@@ -17,6 +17,11 @@ function initializeWebSocketListeners() {
     clearInterval(pingInterval);
   });
 
+  socket.onopen = () => {
+  console.log("Connecté");
+  socket.send("hello");
+};
+
   ws.addEventListener("message", (e) => {
     console.log(`RECEIVED: ${e.data}: ${counter}`);
     counter++;
