@@ -19,6 +19,7 @@ function joinGame(code){
             const urlPart = code[i] + code[i+1];
             url += `${Number("0x" + urlPart)}.`
         }
+        console.log(url);
         url.slice(0,-1);
         try{
             connect()
