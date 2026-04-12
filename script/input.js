@@ -16,8 +16,8 @@ function joinGame(code){
         code = code.toUpperCase();
         var url = ""
         for(let i = 0; i < code.length; i+=2){
-            const ipPart = code[i] + code[i+1];
-            ip += '${Number("0x" + code)}.'
+            const urlPart = code[i] + code[i+1];
+            url += '${Number("0x" + urlPart)}.'
         }
         url.slice(0,-1);
         try{
