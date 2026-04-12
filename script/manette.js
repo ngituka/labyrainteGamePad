@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 function tirer(x, y){
-    if (socket.readyState === WebSocket.OPEN) {
-        socket.send(JSON.stringify({
+    if (ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({
             direction: { x: x, y: y },
             charcterType: charType
         }));
