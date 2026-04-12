@@ -3,22 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Labyrainté - code</title>
-    <link href="codePartie.css" rel="stylesheet">
-    <script type="module" src="script/input.js"></script>
+    <title>labyrainté</title>
+    <link href="manette.css" rel="stylesheet">
+    <script type="module" src="script/manette.js"></script>
+    <script src="script/joystick.js"></script>
 </head>
 <body>
-
-    <h1 >Entrez le code de votre partie : </h1>
-
-    <div class="codeInput">
-        <input type="text" name="pin" maxlength="8" size="8" placeholder="ABCD1234" id="code" autocapitalize="on">
-        <br>
-        <button id="join">Rejoindre !</button>
+    <div id="orientationOverlay">
+        <h2 class="orientationText">Pour jouer à labyrainté, mets ton téléphone en more paysage.</h2>
+    </div>
+    <div class="health-bar">
+        <span class="pv-text">pv:</span>
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/life.png" alt="coeur plein" class="heart">
+        <img src="images/lifeloss.png" alt="coeur vide" class="heart">
+        <img src="images/lifeloss.png" alt="coeur vide" class="heart">
     </div>
 
-    <div id="error">
-        <p>Merci d'entrer un code entier (8 caractères minimum).</p>
+    <div class="controls-area">
+        
+        <div class="joystick-wrapper">
+            <img src="images/bg-joystick.png" alt="fond joystick" class="joystick-bg">
+            <img src="images/joystick.png" alt="joystick" class="joystick-stick" id="joystick" draggable="false">
+        </div>
+
+        <div class="action-buttons">
+            <div class="btn-shoot-wrapper">
+                <img src="images/shoot.png" alt="bouton tirer" class="action-btn" id="shoot">
+            </div>
+        </div>
+
     </div>
 
 </body>
