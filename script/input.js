@@ -1,4 +1,4 @@
-import {socket} from './websocket.js';
+import {ws} from './websocket.js';
 
 document.addEventListener("DOMContentLoaded", (event)=>{
     let button = document.getElementById("join");
