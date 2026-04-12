@@ -7,9 +7,8 @@ document.addEventListener("DOMContentLoaded", (event)=>{
     button.addEventListener("click", ()=>joinGame(input.value));
 });
 
-function joinGame(){
+function joinGame(code){
     const error = document.querySelector("#error");
-    const code = document.querySelector("#codeInput").innerText;
     if(code.length !== 8){
         error.style.visibility = "visible";
     }
