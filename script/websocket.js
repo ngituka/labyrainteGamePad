@@ -6,6 +6,9 @@ let pingInterval;
 function initializeWebSocketListeners() {
   ws.addEventListener("open", () => {
     console.log("CONNECTED");
+
+    ws.send("hello");
+
     pingInterval = setInterval(() => {
       console.log(`SENT: ping: ${counter}`);
       ws.send("ping");
@@ -17,28 +20,16 @@ function initializeWebSocketListeners() {
     clearInterval(pingInterval);
   });
 
-  socket.onopen = () => {
-  console.log("Connecté");
-  socket.send("hello");
-};
-
   ws.addEventListener("message", (e) => {
     console.log(`RECEIVED: ${e.data}: ${counter}`);
     counter++;
   });
 
   ws.addEventListener("error", (e) => {
-    console.log(`ERROR`);
+    console.log("ERROR", e);
   });
 }
 
-window.addEventListener("pageshow", (event) => {
-  if (event.persisted) {
-    ws = new WebSocket(wssUrl);
-    initializeWebSocketListeners();
-  }
-});
-
 console.log("OPENING");
 ws = new WebSocket(wssUrl);
-initializeWebSocketListeners(ws);
+initializeWebSocketListeners();
