@@ -13,8 +13,8 @@ function joinGame(code){
     }
     else{
         code = code.toUpperCase();
-        if (socket.readyState === WebSocket.OPEN) {
-            socket.send(code);
+        if (ws.readyState === WebSocket.OPEN) {
+            ws.send(code);
         } else {
             console.log('WebSocket is not open.');
         }
