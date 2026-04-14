@@ -1,3 +1,5 @@
+import {ws} from './websocket.js';
+
 let gauche;
 let haut;
 
@@ -61,6 +63,10 @@ function test(e, joystick) {
     joystick.style.top = haut + "px"
     console.log("gauche = " + gauche + ", haut = " + haut);
     console.log("left = " + joystick.style.left + ", top = " + joystick.style.top);
+    ws.send(JSON.stringify({
+        x: gauche,
+        y: haut
+      }))
 }
 
 function resetJoystick(e){

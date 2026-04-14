@@ -1,25 +1,17 @@
-
 import {ws} from './websocket.js';
-
-const charType = 0;
 
 document.addEventListener("DOMContentLoaded", (event) => {
     const shoot = document.getElementById("shoot");
     shoot.addEventListener("click", () => {
-        tirer(joystickX, joystickY);
+        tirer();
     });
-    const joystick = document.getElementById("joystick");
-    const joystickOrientation = joystick.getBoundingClientRect();
-    let joystickX = joystickOrientation.left;
-    let joystickY = joystickOrientation.top;
-
 });
 
-function tirer(x, y){
+function tirer(){
     if (ws.readyState === WebSocket.OPEN) {
+        console.log("piou piou")
         ws.send(JSON.stringify({
-            direction: { x: x, y: y },
-            charcterType: charType
-        }));
+            shoot: true
+          }))//shoot
     }
 }
