@@ -34,6 +34,9 @@ function initializeWebSocketListeners() {
             if (data.dead === true) {
                 showDeathScreen();
             }
+            if (data.win === true) {
+                showWinScreen();
+            }
         } catch (err) {
             console.log("Parse error:", err);
         }
@@ -84,6 +87,24 @@ function showDeathScreen() {
     `;
     overlay.innerHTML = `
         <div style="font-size: clamp(2rem, 8vw, 5rem); color: #ff3333; text-shadow: 0 0 30px #ff0000, 0 0 60px #cc0000; font-family: 'pressStart', monospace; letter-spacing: 0.3em;">GAME OVER</div>
+    `;
+    document.body.appendChild(overlay);
+}
+
+function showWinScreen() {
+    if (document.getElementById("winOverlay")) return;
+
+    const overlay = document.createElement("div");
+    overlay.id = "winOverlay";
+    overlay.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        z-index: 999;
+    `;
+    overlay.innerHTML = `
+        <div style="font-size: clamp(2rem, 8vw, 5rem); color: #ffd700; text-shadow: 0 0 30px #ffcc00, 0 0 60px #ffaa00; font-family: 'pressStart', monospace; letter-spacing: 0.3em;">VICTOIRE</div>
     `;
     document.body.appendChild(overlay);
 }
