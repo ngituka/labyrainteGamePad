@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 function tirer(){
-    if (ws.readyState === WebSocket.OPEN) {
-        console.log("piou piou")
-        ws.send(JSON.stringify({
-            shoot: true
-          }))//shoot
-    }
+    if (ws.readyState !== WebSocket.OPEN) 
+        return
+    console.log("piou piou")
+    ws.send(JSON.stringify({
+        shoot: true
+    }))//shoot
 }

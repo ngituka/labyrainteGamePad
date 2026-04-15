@@ -10,8 +10,6 @@ function initializeWebSocketListeners() {
     ws.addEventListener("open", () => {
         console.log("CONNECTED");
 
-        ws.send("hello");
-
     });
 
     ws.addEventListener("close", () => {

@@ -1,16 +1,14 @@
 import {ws} from './websocket.js';
-
 let gauche;
 let haut;
-
 let maxGauche, maxHaut;
 let minGauche, minHaut;
 const decalage = 40;
 let baseGauche, baseHaut;
-
 let joystick;
 let lastX;
 let lastY;
+
 
 //TODO : corriger retour centre sur maintien joystick
 //TODO : tailles des boutons
@@ -31,47 +29,49 @@ document.addEventListener("DOMContentLoaded", (event) => {
         lastX = e.touches[0].clientX;
         lastY = e.touches[0].clientY;
     });
-
     joystick.addEventListener("touchmove", (e) => {
         test(e, joystick);
     });
-
     joystick.addEventListener("touchend", resetJoystick);
 });
 
 function test(e, joystick) {
+    if(ws.readyState !== WebSocket.OPEN)
+        return
     let movementX = e.touches[0].clientX - lastX;
     let movementY = e.touches[0].clientY - lastY;
     lastX = e.touches[0].clientX;
     lastY = e.touches[0].clientY;
 
-    console.log("left = " + joystick.style.left + ", top = " + joystick.style.top);
-    if(movementX > 0){
+    if (movementX > 0) {
         gauche = Math.min(maxGauche, gauche + movementX);
-    }
-    else{
+    } else {
         gauche = Math.max(minGauche, gauche + movementX);
     }
-    if(movementY > 0){
+    if (movementY > 0) {
         haut = Math.min(maxHaut, haut + movementY);
-    }
-    else{
+    } else {
         haut = Math.max(minHaut, haut + movementY);
     }
-    haut = Math.min(maxHaut, haut + movementY);
-    joystick.style.left = gauche + "px"
-    joystick.style.top = haut + "px"
-    console.log("gauche = " + gauche + ", haut = " + haut);
-    console.log("left = " + joystick.style.left + ", top = " + joystick.style.top);
-    ws.send(JSON.stringify({
-        x: gauche,
-        y: haut
-      }))
+
+    joystick.style.left = gauche + "px";
+    joystick.style.top = haut + "px";
+
+    // Conversion : base (0,0), X+ vers droite, Y+ vers haut
+    const x = gauche - baseGauche;
+    const y = haut - baseHaut; // Inversion car Y CSS descend vers le bas
+    console.log(`x: ${x}, y: ${y}`)
+
+    ws.send(JSON.stringify({ x, y }));
 }
 
-function resetJoystick(e){
+function resetJoystick(e) {
+    if(ws.readyState !== WebSocket.OPEN)
+        return
     gauche = baseGauche;
     haut = baseHaut;
-    joystick.style.left = gauche + "px"
-    joystick.style.top = haut + "px"
+    joystick.style.left = gauche + "px";
+    joystick.style.top = haut + "px";
+
+    ws.send(JSON.stringify({ x: 0, y: 0 })); // Envoie (0,0) au relâchement
 }
