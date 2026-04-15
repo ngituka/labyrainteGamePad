@@ -5,6 +5,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
     shoot.addEventListener("click", () => {
         tirer();
     });
+
+    ws.onmessage = function(event) {
+        try {
+            const data = JSON.parse(event.data);
+            if (data.type === "team_color") {
+                document.getElementById("pv-text").style.color = data.color;
+            }
+        } catch (e) {
+            console.log("❌ JSON Parse Error:", e);
+        }
+    };
 });
 
 function tirer(){
