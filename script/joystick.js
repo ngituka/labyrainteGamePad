@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     joystick.addEventListener("touchend", resetJoystick);
 });
 
+let lastPos = (0,0)
+
 function test(e, joystick) {
     if(ws.readyState !== WebSocket.OPEN)
         return
@@ -59,9 +61,10 @@ function test(e, joystick) {
 
     // Conversion : base (0,0), X+ vers droite, Y+ vers haut
     const x = gauche - baseGauche;
-    const y = haut - baseHaut; // Inversion car Y CSS descend vers le bas
-    console.log(`x: ${x}, y: ${y}`)
-
+    const y = haut - baseHaut;
+    
+    if((x, y) === lastPos)
+        return
     ws.send(JSON.stringify({ x, y }));
 }
 
